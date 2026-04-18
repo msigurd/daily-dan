@@ -1,7 +1,10 @@
 'use strict';
 
 import MajorWords from 'major-words';
+import MersenneTwister from 'mersenne-twister';
 
+const MILLISECONDS_PER_DAY = 86400000;
+const NUMBER_GENERATOR = new MersenneTwister(daysSinceUnixEpoch());
 const DANS_FILEPATH = 'dans.txt';
 const CATEGORY_PATTERN = '\\[\\w+]';
 const PALETTE_NAMES = [
@@ -61,12 +64,14 @@ function fadeIn(el, delayMs = 0) {
   }, delayMs);
 }
 
-// Helpers
+function daysSinceUnixEpoch() {
+  return Math.floor(Date.now() / MILLISECONDS_PER_DAY);
+}
 
 function randomElement(array) {
   return array[randomInt(array.length)];
 }
 
 function randomInt(max) {
-  return Math.floor(Math.random() * max);
+  return Math.floor(NUMBER_GENERATOR.random() * max);
 }

@@ -12,6 +12,7 @@
     "vite": "^8.0.4"
   },
   "dependencies": {
-    "major-words": "^1.0.0"
+    "major-words": "^1.0.0",
+    "mersenne-twister": "^1.1.0"
   }
 }
