@@ -1,0 +1,9 @@
+services:
+  app:
+    image: docker.io/oven/bun:1.3.12
+    entrypoint: sh -c "cd /app && bun run dev -- --host 0.0.0.0"
+    command: sh -c "cd /app && bun install"
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./:/app
